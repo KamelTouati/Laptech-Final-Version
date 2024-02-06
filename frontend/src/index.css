@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Raleway", sans-serif;
+}
+
+.borderStyle {
+  background: linear-gradient(
+    150deg,
+    rgb(81, 0, 255),
+    #b843e1,
+    #69c5f9,
+    #453c67
+  );
+  backdrop-filter: blur(2px);
+}
+.borderstyle2 {
+  border: 3px solid;
+  border-image: linear-gradient(
+    150deg,
+    #5121c1,
+    transparent,
+    #b843e1,
+    transparent,
+    #69c5f9,
+    transparent,
+    #619fbe
+  );
+  border-image-slice: 1;
+  transition: all 0.8s ease;
+  border-radius: 8px;
+}
+.borderstyle22 {
+  border: 2px solid;
+  border-image: linear-gradient(150deg, #5121c1, #b843e1);
+  border-image-slice: 1;
+}
+.borderstyle2:hover {
+  border-image: linear-gradient(150deg, #5121c1, #b843e1, #69c5f9, #619fbe);
+  border-image-slice: 1;
+}
+.buttonStyle {
+  border-radius: 25px;
+  border-top: 1px solid #d9d9d9;
+  background: #f5f5fa;
+  /* Shadow 3 */
+  box-shadow: -10px -10px 20px 0px #fff,
+    10px 10px 20px 0px rgba(170, 170, 204, 0.5),
+    5px 5px 10px 0px rgba(170, 170, 204, 0.25),
+    -5px -5px 10px 0px rgba(255, 255, 255, 0.5);
+}
+
+.buttonStyle2 {
+  border-radius: 20px;
+  background: #f4f4ff;
+  /* Shadow 3 */
+  box-shadow: 0px 5px 10px 0px rgba(170, 170, 204, 0.3),
+    5px 5px 10px 0px rgba(170, 170, 204, 0.25),
+    inset -5px -5px 10px 0px rgba(255, 255, 255, 0.5);
+}
+.buttonStyle22 {
+  border-radius: 20px;
+  background: #928cd2;
+  /* Shadow 3 */
+  box-shadow: 0px 5px 10px 0px rgba(137, 137, 150, 0.5),
+    /* 5px 5px 10px 0px rgba(170, 170, 204, 0.25), */ inset 0px -5px 10px 0px rgba(106, 103, 103, 0.3);
+}
+
+.buttonStyle3 {
+  border-radius: 7px;
+  background: rgba(227, 219, 219, 0.1);
+  box-shadow: 0px 4px 4px 0px rgba(193, 193, 193, 0.36);
+}
+
+.toggle-dot {
+  transform: translateX(10px);
+}
+#toggle:checked + label .toggle-dot {
+  transform: translateX(100%);
+}
+
+.inputStyle {
+  border-radius: 20px;
+  background: #f4f4ff;
+
+  /* Inner shadow 2 */
+  box-shadow: -5px -5px 10px 0px #fff inset,
+    5px 5px 10px 0px rgba(170, 170, 204, 0.5) inset,
+    2px 2px 4px 0px rgba(170, 170, 204, 0.25) inset,
+    -2px -2px 4px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.shadow-inner5 {
+  box-shadow: 0px 0.01px 5px 0px black;
+}
+
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #000 transparent #555 transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}

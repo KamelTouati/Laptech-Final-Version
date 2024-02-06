@@ -1,0 +1,28 @@
+.carousel-container {
+  position: relative;
+  width: 100%;
+  /* overflow: hidden; */
+}
+
+.carousel-container .grid {
+  transition: transform 0.3s ease;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+.carousel-prev,
+.carousel-next {
+  /* Style your previous and next buttons */
+}
