@@ -35,7 +35,8 @@
     "react-toastify": "^8.1.1",
     "redux-devtools-extension": "^2.13.8",
     "sweetalert": "^2.1.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "moment": "^2.14.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

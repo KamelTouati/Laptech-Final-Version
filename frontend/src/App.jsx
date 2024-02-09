@@ -10,6 +10,7 @@ import {
   UsersTable,
   ProductsTable,
   CategoriesTable,
+  CommentsTable,
   ForgotPassword,
   Login,
   ResetPassword,

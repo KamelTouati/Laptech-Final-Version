@@ -2,6 +2,7 @@ import React from "react";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import logo1 from "/public/assets/logo1.svg";
 
 export default function Footer() {
   return (
@@ -10,15 +11,11 @@ export default function Footer() {
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
             <a href="/" class="flex items-center">
-              <img
-                src="./assets/logo1.svg"
-                class="h-8 me-3"
-                alt="Logo"
-              />
+              <img src={logo1} class="h-8 me-3" alt="Logo" />
             </a>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-              <div>
+            <div>
               <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Follow us
               </h2>

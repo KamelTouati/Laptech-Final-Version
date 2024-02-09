@@ -37,14 +37,14 @@ const AdminMain = () => {
           </div>
         </div>
         <div className="admin-main-card">
-          <h5 className="admin-card-title">Posts</h5>
-          <div className="admin-card-count">{postsCount}</div>
+          <h5 className="admin-card-title">Products</h5>
+          <div className="admin-card-count">{productsCount}</div>
           <div className="admin-card-link-wrapper">
-            <Link to="/admin-dashboard/posts-table" className="admin-card-link">
-              See all posts
+            <Link to="/admin-dashboard/products-table" className="admin-card-link">
+              See all products
             </Link>
             <div className="admin-card-icon">
-              <i className="bi bi-file-post"></i>
+              <i className="bi bi-file-product"></i>
             </div>
           </div>
         </div>

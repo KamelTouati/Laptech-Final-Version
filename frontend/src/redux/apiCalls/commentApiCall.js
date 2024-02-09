@@ -12,7 +12,7 @@ export function createComment(newComment) {
           Authorization: "Bearer " + getState().auth.user.token,
         },
       });
-      dispatch(postActions.addCommentToPost(data));
+      dispatch(productActions.addCommentToProduct(data));
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -32,7 +32,7 @@ export function updateComment(commentId, comment) {
           },
         }
       );
-      dispatch(postActions.updateCommentPost(data));
+      dispatch(productActions.updateCommentProduct(data));
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -49,7 +49,7 @@ export function deleteComment(commentId) {
         },
       });
       dispatch(commentActions.deleteComment(commentId));
-      dispatch(postActions.deleteCommentFromPost(commentId));
+      dispatch(productActions.deleteCommentFromProduct(commentId));
     } catch (error) {
       toast.error(error.response.data.message);
     }

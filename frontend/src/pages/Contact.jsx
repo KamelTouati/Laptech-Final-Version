@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import girl1 from "/public/assets/girl1.png";
 
 const Contact = () => {
   return (
@@ -75,7 +76,7 @@ const Contact = () => {
                 </button>
               </form>
             </div>
-            <img className="w-[500px]" src="/assets/girl1.png" alt="" />
+            <img className="w-[500px]" src={girl1} alt="" />
           </div>
         </div>
       </div>

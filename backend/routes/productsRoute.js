@@ -8,6 +8,7 @@ const {
   updateProduct,
   updateProductImage,
   toggleLike,
+  toggleCart,
 } = require("../controllers/productsController");
 const photoUpload = require("../middlewares/photoUpload");
 const { verifyToken } = require("../middlewares/verifyToken");
@@ -38,5 +39,8 @@ router.route("/update-image/:id")
 
 // /api/products/like/:id
 router.route("/like/:id").put(validateObjectId, verifyToken, toggleLike);
+
+// /api/products/cart/:id
+router.route("/cart/:id").put(validateObjectId, verifyToken, toggleCart);
 
 module.exports = router;

@@ -8,6 +8,9 @@ import {
   fetchProducts,
   getProductsCount,
 } from "../../redux/apiCalls/productApiCall";
+import Group22 from "/public/assets/Group22.png";
+import Forward from "/public/assets/Forward.png";
+import Back from "/public/assets/Back.png";
 
 const PRODUCT_PER_PAGE = 3;
 
@@ -71,7 +74,7 @@ export default function Products() {
             <div class=" w-full rounded-[2.5rem] bg-color1 flex justify-center items-center relative">
               <img
                 className="absolute -bottom-[100px] -left-[100px] w-[280px]"
-                src="./assets/Group22.png"
+                src={Group22}
                 alt=""
               />
               <div className="mx-8 flex flex-col items-center py-10">
@@ -87,7 +90,10 @@ export default function Products() {
                   support from our AI model, guiding you to the right laptop
                   price based on its features.
                 </h3>
-                <Link to="/product-predict" className="buttonStyle px-5 py-2">
+                <Link
+                  to="/products/predict-product-price"
+                  className="buttonStyle px-5 py-2"
+                >
                   Ai Guide
                 </Link>
               </div>
@@ -111,7 +117,7 @@ export default function Products() {
             onClick={prevSlide}
           >
             <span class="inline-flex items-center justify-center">
-              <img src="./assets/Forward.png" />
+              <img src={Forward} />
               <span class="sr-only">Next</span>
             </span>
           </button>
@@ -121,7 +127,7 @@ export default function Products() {
             onClick={nextSlide}
           >
             <span className="inline-flex items-center justify-center">
-              <img src="./assets/Back.png" />
+              <img src={Back} />
               <span class="sr-only">Previous</span>
             </span>
           </button>

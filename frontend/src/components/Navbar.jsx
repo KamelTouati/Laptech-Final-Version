@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CiUser, CiHeart, CiShoppingCart } from "react-icons/ci";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../redux/apiCalls/authApiCall";
+import logo from "/public/assets/logo.svg";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -99,7 +100,12 @@ const Navbar = () => {
             data-dropdown-placement="bottom"
           >
             <span className="sr-only">Open user menu</span>
-            <CiUser className="text-3xl" />
+            {/* <CiUser className="text-3xl" /> */}
+            <img
+              className="w-[30px] h-[30px] rounded-[20px]"
+              src={user.profilePhoto.url}
+              alt=""
+            />
           </button>
           <div
             className={`absolute md:right-0 z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow ${
@@ -109,13 +115,14 @@ const Navbar = () => {
           >
             <div className="py-3">
               <span className="block text-sm text-gray-900">
-                <span
+                <Link
+                  to={`/profile/${user?._id}`}
                   className="text-sm block py-2 pl-3 pr-4
                         rounded text-blue-700
                         "
                 >
                   {user ? user.username : ""}
-                </span>
+                </Link>
               </span>
               {/* <span className="block text-sm text-gray-500 truncate">
                 <span
@@ -169,13 +176,14 @@ const Navbar = () => {
           >
             <div className="py-3">
               <span className="block text-sm text-gray-900">
-                <span
+                <Link
+                  to="admin-dashboard"
                   className="text-sm block py-2 pl-3 pr-4
                         rounded text-blue-700
                         "
                 >
                   {user ? user.username : ""}
-                </span>
+                </Link>
               </span>
               <span className="block text-sm text-gray-500 truncate">
                 <span
@@ -191,7 +199,7 @@ const Navbar = () => {
             <ul className="py-2">
               <li>
                 <Link
-                  onClick={logoutUser}
+                  onClick={logoutHandler}
                   to="/"
                   className="text-sm block py-2 pl-3 pr-4 md:m-2 md:text-white md:bg-color3 rounded text-blue-700"
                   aria-current="page"
@@ -219,7 +227,7 @@ const Navbar = () => {
     <nav className="bg-white border-gray-200 dark:bg-gray-900 relative z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center">
-          <img src="./assets/logo.svg" className="h-8 mr-3" alt="Logo" />
+          <img src={logo} className="h-8 mr-3" alt="Logo" />
           {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             LapTech
           </span> */}

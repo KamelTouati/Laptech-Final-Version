@@ -292,3 +292,43 @@ module.exports.toggleLike = asyncHandler(async (req, res) => {
 
   res.status(200).json(product);
 });
+
+/**-----------------------------------------------
+ * @desc    Toggle cart
+ * @route   /api/products/cart/:id
+ * @method  PUT
+ * @access  private (only logged in user)
+ ------------------------------------------------*/
+module.exports.toggleCart = asyncHandler(async (req, res) => {
+  const loggedInUser = req.user.id;
+  const { id: productId } = req.params;
+
+  let product = await Product.findById(productId);
+  if (!product) {
+    return res.status(404).json({ message: "product not found" });
+  }
+
+  const isProductAlreadyAdded = product.cart.find(
+    (user) => user.toString() === loggedInUser
+  );
+
+  if (isProductAlreadyAdded) {
+    product = await Product.findByIdAndUpdate(
+      productId,
+      {
+        $pull: { cart: loggedInUser },
+      },
+      { new: true }
+    );
+  } else {
+    product = await Product.findByIdAndUpdate(
+      productId,
+      {
+        $push: { cart: loggedInUser },
+      },
+      { new: true }
+    );
+  }
+
+  res.status(200).json(product);
+});

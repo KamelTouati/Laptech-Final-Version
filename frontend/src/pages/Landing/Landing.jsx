@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import girl2 from "/public/assets/girl2.png";
+import robot from "/public/assets/robot.png";
+import robot1 from "/public/assets/robot1.png";
 
 const Landing = () => {
+  const { user } = useSelector((state) => state.auth);
   return (
     <>
       <div className="flex flex-col lg:px-20">
@@ -11,10 +16,12 @@ const Landing = () => {
               <div class=" w-full rounded-[2.5rem] bg-color1 flex justify-center items-center relative">
                 <img
                   className="absolute -bottom-[100px] -left-[100px] w-[200px]"
-                  src="./assets/girl2.png"
+                  src={girl2}
                   alt=""
                 />
                 <div className="mx-8 flex flex-col items-center py-10">
+                  {/* <h1>{user?.username}</h1> */}
+                  {console.log("user.isAdmin: ", user?.isAdmin)}
                   <h1 className="text-4xl font-black my-3 mx-20">
                     Experience the Future of Laptop Shopping at LapTech !
                   </h1>
@@ -26,7 +33,10 @@ const Landing = () => {
                     our AI-driven platform, and experience the future of tech
                     shopping .
                   </h3>
-                  <Link to="/product-predict" className="buttonStyle px-5 py-2">
+                  <Link
+                    to="/products/predict-product-price"
+                    className="buttonStyle px-5 py-2"
+                  >
                     Ai Guide
                   </Link>
                 </div>

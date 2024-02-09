@@ -87,6 +87,22 @@ export function toggleLikeProduct(productId) {
   };
 }
 
+// Toggle Cart Product
+export function toggleCartProduct(productId) {
+  return async (dispatch,getState) => {
+    try {
+      const { data } = await request.put(`/api/products/cart/${productId}`, {}, {
+        headers: {
+          Authorization: "Bearer " + getState().auth.user.token,
+        }
+      });
+      dispatch(productActions.setCart(data));
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+}
+
 // Update Product Image
 export function updateProductImage(newImage,productId) {
   return async (dispatch,getState) => {

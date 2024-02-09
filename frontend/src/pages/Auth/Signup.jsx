@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
 import { registerUser } from "../../redux/apiCalls/authApiCall";
 import swal from "sweetalert";
+import boy2 from "/public/assets/boy2.png";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -143,11 +144,7 @@ const Signup = () => {
               </p>
             </div>
             <div>
-              <img
-                className="z-20 w-[400px] relative"
-                src="/assets/boy2.png"
-                alt=""
-              />
+              <img className="z-20 w-[400px] relative" src={boy2} alt="" />
             </div>
           </div>
         </div>

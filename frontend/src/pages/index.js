@@ -2,6 +2,7 @@ export { default as AdminDashboard } from "./Admin/AdminDashboard";
 export { default as UsersTable } from "./Admin/UsersTable";
 export { default as ProductsTable } from "./Admin/ProductsTable";
 export { default as CategoriesTable } from "./Admin/CategoriesTable";
+export { default as CommentsTable } from "./Admin/CommentsTable";
 export { default as ForgotPassword } from "./Auth/ForgotPassword";
 export { default as Login } from "./Auth/Login";
 export { default as ResetPassword } from "./Auth/ResetPassword";

@@ -1,4 +1,4 @@
-import AdminSidebar from "./AdminSidebar";
+import AdminSidebar from "./components/AdminSidebar";
 import "./admin-table.css";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";

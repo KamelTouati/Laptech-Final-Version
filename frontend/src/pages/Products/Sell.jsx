@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { createProduct } from "../../redux/apiCalls/productApiCall";
 import { RotatingLines } from "react-loader-spinner";
 import { fetchCategories } from "../../redux/apiCalls/categoryApiCall";
+import girl1 from "/public/assets/girl1.png";
 
 const Sell = () => {
   const dispatch = useDispatch();
@@ -29,23 +30,25 @@ const Sell = () => {
     e.preventDefault();
     if (company.trim() === "")
       return toast.error("Product Company is required");
-    if (model.trim() === "") return toast.error("Post Model is required");
+    if (model.trim() === "") return toast.error("Product Model is required");
     if (operating_system.trim() === "")
-      return toast.error("Post Operating System is required");
+      return toast.error("Product Operating System is required");
     if (processor_company.trim() === "")
-      return toast.error("Post Processor Company is required");
+      return toast.error("Product Processor Company is required");
     if (processor_model.trim() === "")
-      return toast.error("Post Processor Model is required");
+      return toast.error("Product Processor Model is required");
     if (graphic_card.trim() === "")
-      return toast.error("Post Graphic Card is required");
-    if (display.trim() === "") return toast.error("Post Display is required");
-    if (memory.trim() === "") return toast.error("Post Memory is required");
-    if (storage.trim() === "") return toast.error("Post Storage is required");
+      return toast.error("Product Graphic Card is required");
+    if (display.trim() === "")
+      return toast.error("Product Display is required");
+    if (memory.trim() === "") return toast.error("Product Memory is required");
+    if (storage.trim() === "")
+      return toast.error("Product Storage is required");
     if (description.trim() === "")
-      return toast.error("Post Description is required");
-    if (price.trim() === "") return toast.error("Post Price is required");
+      return toast.error("Product Description is required");
+    if (price.trim() === "") return toast.error("Product Price is required");
 
-    if (!file) return toast.error("Post Image is required");
+    if (!file) return toast.error("Product Image is required");
 
     const formData = new FormData();
     formData.append("company", company);
@@ -101,7 +104,6 @@ const Sell = () => {
                     placeholder="Enter pc company"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    minLength="6"
                     required
                   />
                 </div>
@@ -117,7 +119,6 @@ const Sell = () => {
                     id="model"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="model"
-                    minLength="6"
                     value={model}
                     onChange={(e) => setModel(e.target.value)}
                     placeholder="Enter pc model"
@@ -136,7 +137,6 @@ const Sell = () => {
                     id="operating_system"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="operating_system"
-                    minLength="6"
                     value={operating_system}
                     onChange={(e) => setOperatingSystem(e.target.value)}
                     placeholder="Enter pc operating system"
@@ -155,7 +155,6 @@ const Sell = () => {
                     id="processor_company"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="processor_company"
-                    minLength="6"
                     value={processor_company}
                     onChange={(e) => setProcessorCompany(e.target.value)}
                     placeholder="Enter pc Processor company"
@@ -174,7 +173,6 @@ const Sell = () => {
                     id="processor_model"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="processor_model"
-                    minLength="6"
                     value={processor_model}
                     onChange={(e) => setProcessorModel(e.target.value)}
                     placeholder="Enter pc Processor model"
@@ -193,7 +191,6 @@ const Sell = () => {
                     id="graphic_card"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="graphic_card"
-                    minLength="6"
                     value={graphic_card}
                     onChange={(e) => setGraphicCard(e.target.value)}
                     placeholder="Enter pc graphic Card"
@@ -211,7 +208,6 @@ const Sell = () => {
                     id="memory"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="memory"
-                    minLength="6"
                     value={memory}
                     onChange={(e) => setMemory(e.target.value)}
                     placeholder="Enter pc memory"
@@ -230,7 +226,6 @@ const Sell = () => {
                     id="display"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="display"
-                    minLength="6"
                     value={display}
                     onChange={(e) => setDisplay(e.target.value)}
                     placeholder="Enter pc display"
@@ -249,7 +244,6 @@ const Sell = () => {
                     id="storage"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="storage"
-                    minLength="6"
                     value={storage}
                     onChange={(e) => setStorage(e.target.value)}
                     placeholder="Enter pc storage"
@@ -268,7 +262,6 @@ const Sell = () => {
                     id="description"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="description"
-                    minLength="6"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Enter pc description"
@@ -287,7 +280,6 @@ const Sell = () => {
                     id="price"
                     className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="price"
-                    minLength="6"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     placeholder="Enter pc price "
@@ -305,7 +297,6 @@ const Sell = () => {
                     type="file"
                     name="file"
                     id="file"
-                    className="create-post-upload"
                     onChange={(e) => setFile(e.target.files[0])}
                   />
                 </div>
@@ -327,7 +318,7 @@ const Sell = () => {
                 </button>
               </form>
             </div>
-            <img className="w-[500px]" src="/assets/girl1.png" alt="" />
+            <img className="w-[500px]" src={girl1} alt="" />
           </div>
         </div>
       </div>

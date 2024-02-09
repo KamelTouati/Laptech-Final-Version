@@ -12,9 +12,9 @@ const AdminSidebar = () => {
           <i className="bi bi-person"></i>
           Users
         </Link>
-        <Link className="admin-sidebar-link" to="/admin-dashboard/posts-table">
-          <i className="bi bi-file-post"></i>
-          Posts
+        <Link className="admin-sidebar-link" to="/admin-dashboard/products-table">
+          <i className="bi bi-file-product"></i>
+          Products
         </Link>
         <Link
           className="admin-sidebar-link"

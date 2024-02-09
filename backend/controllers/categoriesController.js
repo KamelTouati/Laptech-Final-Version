@@ -1,5 +1,9 @@
 const asyncHandler = require("express-async-handler");
 const { Category, validateCreateCategory } = require("../models/categoryModel");
+const {
+  cloudinaryUploadImage,
+  cloudinaryRemoveImage,
+} = require("../utils/cloudinary");
 
 /**-----------------------------------------------
  * @desc    Create New Category
@@ -18,11 +22,11 @@ module.exports.createCategory = asyncHandler(async (req, res) => {
 
   const category = await Category.create({
     title: req.body.title,
-    user: req.user.id,
     image: {
       url: result.secure_url,
       publicId: result.public_id,
     },
+    user: req.user.id,
   });
 
   res.status(201).json(category);

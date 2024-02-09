@@ -2,9 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../../components/Spinner";
 import { toast } from "react-toastify";
 import { loginUser } from "../../redux/apiCalls/authApiCall";
+import boy1 from "/public/assets/boy1.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -91,7 +91,7 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-            <img className="w-[500px]" src="/assets/boy1.png" alt="" />
+            <img className="w-[500px]" src={boy1} alt="" />
           </div>
         </div>
       </div>

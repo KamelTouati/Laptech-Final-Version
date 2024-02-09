@@ -5,5 +5,4 @@ from .utils import predictPrice
 
 @api_view(['POST'])
 def predictPriceView(request):
-        
     return predictPrice(request)

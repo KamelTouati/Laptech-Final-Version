@@ -39,6 +39,9 @@ const productSlice = createSlice({
     setLike(state, action) {
       state.product.likes = action.payload.likes;
     },
+    setCart(state, action) {
+      state.product.cart = action.payload.cart;
+    },
     deleteProduct(state, action) {
       state.products = state.products.filter((p) => p._id !== action.payload);
     },

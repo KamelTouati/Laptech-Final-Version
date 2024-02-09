@@ -18,10 +18,12 @@ export function fetchCategories() {
 export function createCategory(newCategory) {
   return async (dispatch,getState) => {
     try {
+      // console.log(newCategory)
       const { data } = await request.post("/api/categories", newCategory, {
         headers: {
           Authorization: "Bearer " + getState().auth.user.token,
-        }
+          "Content-Type": "multipart/form-data",
+        },
       });
       dispatch(categoryActions.addCategory(data));
       toast.success("category created successfully");

@@ -6,6 +6,7 @@ import {
   getResetPassword,
   resetPassword,
 } from "../../redux/apiCalls/passwordApiCall";
+import secureDocument from "/public/assets/secureDocument.png";
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
@@ -70,7 +71,7 @@ const ResetPassword = () => {
                 <div>
                   <img
                     className="w-[300px]"
-                    src="/assets/secureDocument.png"
+                    src={secureDocument}
                     alt=""
                   />
                 </div>

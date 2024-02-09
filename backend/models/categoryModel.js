@@ -4,11 +4,6 @@ const Joi = require("joi");
 // Category Schema
 const CategorySchema = new mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
     title: {
       type: String,
       required: true,
@@ -20,6 +15,11 @@ const CategorySchema = new mongoose.Schema(
         url: "",
         publicId: null,
       },
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
   },
   {
@@ -33,7 +33,7 @@ const Category = mongoose.model("Category", CategorySchema);
 // Validate Create Category
 function validateCreateCategory(obj) {
   const schema = Joi.object({
-    title: Joi.string().trim().required().label("Title"),
+    title: Joi.string().trim().required().label("title"),
   });
   return schema.validate(obj);
 }

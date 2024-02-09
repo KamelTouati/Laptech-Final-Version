@@ -34,7 +34,7 @@
   );
   border-image-slice: 1;
   transition: all 0.8s ease;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 .borderstyle22 {
   border: 2px solid;
@@ -46,14 +46,14 @@
   border-image-slice: 1;
 }
 .buttonStyle {
-  border-radius: 25px;
+  border-radius: 8px;
   border-top: 1px solid #d9d9d9;
   background: #f5f5fa;
   /* Shadow 3 */
-  box-shadow: -10px -10px 20px 0px #fff,
+  /* box-shadow: -10px -10px 20px 0px #fff,
     10px 10px 20px 0px rgba(170, 170, 204, 0.5),
     5px 5px 10px 0px rgba(170, 170, 204, 0.25),
-    -5px -5px 10px 0px rgba(255, 255, 255, 0.5);
+    -5px -5px 10px 0px rgba(255, 255, 255, 0.5); */
 }
 
 .buttonStyle2 {

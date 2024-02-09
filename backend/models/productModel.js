@@ -82,6 +82,12 @@ const productSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
+    cart: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     timestamps: true,
@@ -122,18 +128,18 @@ function validateCreateProduct(obj) {
 // Validate Update Product
 function validateUpdateProduct(obj) {
   const schema = Joi.object({
-    company: Joi.string().trim().required(),
-    model: Joi.string().trim().required(),
-    operatingSystem: Joi.string().trim().required(),
-    processorCompany: Joi.string().trim().required(),
-    processorModel: Joi.string().trim().required(),
-    graphicCard: Joi.string().trim().required(),
-    memory: Joi.string().trim().required(),
-    display: Joi.string().trim().required(),
-    memory: Joi.string().trim().required(),
-    storage: Joi.string().trim().required(),
-    description: Joi.string().trim().required(),
-    price: Joi.Number().trim().required(),
+    company: Joi.string().trim(),
+    model: Joi.string().trim(),
+    operatingSystem: Joi.string().trim(),
+    processorCompany: Joi.string().trim(),
+    processorModel: Joi.string().trim(),
+    graphicCard: Joi.string().trim(),
+    memory: Joi.string().trim(),
+    display: Joi.string().trim(),
+    memory: Joi.string().trim(),
+    storage: Joi.string().trim(),
+    description: Joi.string().trim(),
+    price: Joi.number().trim(),
   });
   return schema.validate(obj);
 }

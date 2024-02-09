@@ -8,6 +8,7 @@ export function getUserProfile(userId) {
   return async (dispatch) => {
     try {
       const { data } = await request.get(`/api/users/profile/${userId}`);
+      console.log(data);
       dispatch(profileActions.setProfile(data));
     } catch (error) {
       toast.error(error.response.data.message);

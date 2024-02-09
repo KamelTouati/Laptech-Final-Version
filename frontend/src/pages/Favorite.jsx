@@ -1,34 +1,51 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../components";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import Pagination from "../components/pagination/Pagination";
+import { fetchProducts } from "../redux/apiCalls/productApiCall";
+import robot2 from "/public/assets/robot2.png";
+
+const PRODUCT_PER_PAGE = 3;
 
 export default function Favorite() {
-  const [laptopsData, setLaptopsData] = useState([]);
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
+  const { productsCount, products } = useSelector((state) => state.product);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const pages = Math.ceil(productsCount / PRODUCT_PER_PAGE);
 
   useEffect(() => {
-    axios
-      .get("/data/data.json")
-      .then((response) => {
-        setLaptopsData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+    dispatch(fetchProducts(currentPage));
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   return (
-    <div>
-      <div className="flex justify-around items-center">
+    <div className="p-20">
+      <div className="flex justify-between items-center">
         <div className="flex flex-col">
           <h1 className="text-5xl font-bold">Your chosen favorites :</h1>
           <h4>A personalized lineup of laptops tailored just for you.</h4>
         </div>
-        <img src="./assets/robot2.png" />
+        <img src={robot2} />
       </div>
-      <div class="p-4 flex-1 md:grid md:grid-cols-2 gap-4 ">
-        {/* {laptopsData.map((laptop) => (
-          <Card key={laptop.id} laptop={laptop} />
-        ))} */}
+      <div class="p-4 flex-1 md:grid md:grid-cols-1 gap-4 ">
+        {products.map((product) =>
+          product?.likes.map((userId) =>
+            userId === user?._id ? (
+              <Card key={product._id} product={product} />
+            ) : (
+              ""
+            )
+          )
+        )}
       </div>
+      <Pagination
+        pages={pages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 }
