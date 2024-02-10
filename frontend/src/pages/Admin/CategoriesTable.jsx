@@ -39,7 +39,7 @@ const CategoriesTable = () => {
         <table className="table">
           <thead>
             <tr>
-              <th>Count</th>
+              {/* <th>Count</th> */}
               <th>Category Title</th>
               <th>Action</th>
             </tr>

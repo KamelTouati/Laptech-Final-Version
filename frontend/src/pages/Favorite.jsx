@@ -22,13 +22,13 @@ export default function Favorite() {
   }, [currentPage]);
 
   return (
-    <div className="p-20">
+    <div className="py-6 px-20">
       <div className="flex justify-between items-center">
         <div className="flex flex-col">
-          <h1 className="text-5xl font-bold">Your chosen favorites :</h1>
+          <h1 className="text-5xl font-bold my-4">Your chosen favorites :</h1>
           <h4>A personalized lineup of laptops tailored just for you.</h4>
         </div>
-        <img src={robot2} />
+        <img src={robot2} className="w-[100px]" />
       </div>
       <div class="p-4 flex-1 md:grid md:grid-cols-1 gap-4 ">
         {products.map((product) =>

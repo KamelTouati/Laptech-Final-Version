@@ -16,6 +16,6 @@ export { default as ProductDetails } from "./Products/ProductDetails/ProductDeta
 export { default as Profile } from "./Profile/Profile";
 export { default as VerifyEmail } from "./VerifyEmail/VerifyEmail";
 export { default as NotFound } from "./NotFound";
-export { default as Cart } from "./Cart";
+export { default as Cart } from "./Cart/Cart";
 export { default as Contact } from "./Contact";
 export { default as Favorite } from "./Favorite";

@@ -9,7 +9,7 @@ import boy1 from "/public/assets/boy1.png";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   // const navigate = useNavigate();
   const dispatch = useDispatch();
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "../components";
+import CartTable from "./componenets/CartTable";
 import { useDispatch, useSelector } from "react-redux";
-import Pagination from "../components/pagination/Pagination";
-import { fetchProducts } from "../redux/apiCalls/productApiCall";
-import robot2 from "/public/assets/robot2.png";
+import Pagination from "../../components/pagination/Pagination";
+import { fetchProducts } from "../../redux/apiCalls/productApiCall";
+import girl from "/public/assets/girl.png";
 
 const PRODUCT_PER_PAGE = 3;
 
@@ -22,23 +22,23 @@ export default function Cart() {
   }, [currentPage]);
 
   return (
-    <div className="p-20">
+    <div className="py-6 px-20">
       <div className="flex justify-between items-center">
         <div className="flex flex-col">
-          <h1 className="text-5xl font-bold">Your Cart :</h1>
+          <h1 className="text-3xl font-bold my-4">Shopping Cart :</h1>
         </div>
-        <img src={robot2} />
       </div>
-      <div class="p-4 flex-1 md:grid md:grid-cols-1 gap-4 ">
+      <div class="p-4 flex justify-between">
         {products.map((product) =>
           product?.cart.map((userId) =>
             userId === user?._id ? (
-              <Card key={product._id} product={product} />
+              <CartTable key={product._id} product={product} />
             ) : (
               ""
             )
           )
         )}
+        <img src={girl} className="w-[300px]" />
       </div>
       <Pagination
         pages={pages}
