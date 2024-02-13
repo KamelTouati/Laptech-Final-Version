@@ -37,14 +37,14 @@ module.exports.registerUser = asyncHandler(async (req, res) => {
   await user.save();
 
   // Creating new VerificationToken & save it toDB
-  const verifictionToken = new VerificationToken({
+  const verificationToken = new VerificationToken({
     userId: user._id,
     token: crypto.randomBytes(32).toString("hex"),
   });
-  await verifictionToken.save();
+  await verificationToken.save();
 
   // Making the link
-  const link = `${process.env.CLIENT_DOMAIN}/users/${user._id}/verify/${verifictionToken.token}`;
+  const link = `${process.env.CLIENT_DOMAIN}/users/${user._id}/verify/${verificationToken.token}`;
 
   // Putting the link into an html template
   const htmlTemplate = `

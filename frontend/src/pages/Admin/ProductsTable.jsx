@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getAllProducts, deleteProduct } from "../../redux/apiCalls/productApiCall";
+import {
+  getAllProducts,
+  deleteProduct,
+} from "../../redux/apiCalls/productApiCall";
 
 const ProductsTable = () => {
   const dispatch = useDispatch();
@@ -57,13 +60,21 @@ const ProductsTable = () => {
                     <span className="table-username">{item.user.username}</span>
                   </div>
                 </td>
-                <td>{item.title}</td>
+                <td>
+                  {item.company}
+                  {item.model}
+                </td>
                 <td>
                   <div className="table-button-group">
-                    <button>
-                      <Link to={`/products/details/${item._id}`}>View Product</Link>
+                    <button className="buttonStyle p-2">
+                      <Link to={`/products/details/${item._id}`}>
+                        View Product
+                      </Link>
                     </button>
-                    <button onClick={() => deleteProductHandler(item._id)}>
+                    <button
+                      className="buttonStyle p-2"
+                      onClick={() => deleteProductHandler(item._id)}
+                    >
                       Delete Product
                     </button>
                   </div>

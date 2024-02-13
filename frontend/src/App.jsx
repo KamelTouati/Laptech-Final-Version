@@ -35,9 +35,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Layout from "./hocs/Layout";
 import { useSelector } from "react-redux";
 
-import store from "./redux/store";
-import { Provider } from "react-redux";
-
 export default function App() {
   const { user } = useSelector((state) => state.auth);
 

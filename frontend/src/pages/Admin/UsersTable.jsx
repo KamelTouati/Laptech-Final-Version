@@ -63,10 +63,13 @@ const UsersTable = () => {
                 <td>{item.email}</td>
                 <td>
                   <div className="table-button-group">
-                    <button>
+                    <button className="buttonStyle p-2">
                       <Link to={`/profile/${item._id}`}>View Profile</Link>
                     </button>
-                    <button onClick={() => deleteUserHandler(item._id)}>
+                    <button
+                      className="buttonStyle p-2"
+                      onClick={() => deleteUserHandler(item._id)}
+                    >
                       Delete User
                     </button>
                   </div>

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CiUser, CiHeart, CiShoppingCart } from "react-icons/ci";
 import { useSelector, useDispatch } from "react-redux";

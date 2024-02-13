@@ -16,31 +16,36 @@ export function fetchCategories() {
 
 // Create Category
 export function createCategory(newCategory) {
-  return async (dispatch,getState) => {
-    try {
-      // console.log(newCategory)
-      const { data } = await request.post("/api/categories", newCategory, {
-        headers: {
-          Authorization: "Bearer " + getState().auth.user.token,
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      dispatch(categoryActions.addCategory(data));
-      toast.success("category created successfully");
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
+  return async (dispatch, getState) => {
+      try {
+        dispatch(categoryActions.setLoading());
+        await request.post(`/api/categories`, newCategory, {
+          headers: {
+            Authorization: "Bearer " + getState().auth.user.token,
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        dispatch(categoryActions.setIsCategoryCreated());
+        setTimeout(
+          () => dispatch(categoryActions.clearIsCategoryCreated()),
+          2000
+        ); // 2s
+      } catch (error) {
+        toast.error(error.response.data.message);
+        dispatch(categoryActions.clearLoading());
+      }
   };
 }
 
 // Delete Category
 export function deleteCategory(categoryId) {
-  return async (dispatch,getState) => {
+  return async (dispatch, getState) => {
     try {
       const { data } = await request.delete(`/api/categories/${categoryId}`, {
         headers: {
           Authorization: "Bearer " + getState().auth.user.token,
-        }
+        },
       });
       dispatch(categoryActions.deleteCategory(data.categoryId));
       toast.success(data.message);
