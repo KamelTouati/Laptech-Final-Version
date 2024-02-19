@@ -16,9 +16,7 @@ const AddCategoryForm = () => {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("image", file);
-    dispatch(createCategory(FormData));
-    // setTitle("");
-    // setFile("");
+    dispatch(createCategory(formData));
   };
 
   return (

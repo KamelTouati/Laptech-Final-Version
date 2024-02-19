@@ -141,7 +141,8 @@ module.exports.verifyUserAccount = asyncHandler(async (req, res) => {
     userId: user._id,
     token: req.params.token,
   });
-
+  console.log("verificationToken", verificationToken);
+  
   if (!verificationToken) {
     return res.status(400).json({ message: "invalid link" });
   }

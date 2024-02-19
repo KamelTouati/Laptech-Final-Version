@@ -17,24 +17,25 @@ export function fetchCategories() {
 // Create Category
 export function createCategory(newCategory) {
   return async (dispatch, getState) => {
-      try {
-        dispatch(categoryActions.setLoading());
-        await request.post(`/api/categories`, newCategory, {
-          headers: {
-            Authorization: "Bearer " + getState().auth.user.token,
-            "Content-Type": "multipart/form-data",
-          },
-        });
+    try {
+      dispatch(categoryActions.setLoading());
+      // console.log(`newCategory ${newCategory}`);
+      await request.post(`/api/categories`, newCategory, {
+        headers: {
+          Authorization: "Bearer " + getState().auth.user.token,
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-        dispatch(categoryActions.setIsCategoryCreated());
-        setTimeout(
-          () => dispatch(categoryActions.clearIsCategoryCreated()),
-          2000
-        ); // 2s
-      } catch (error) {
-        toast.error(error.response.data.message);
-        dispatch(categoryActions.clearLoading());
-      }
+      dispatch(categoryActions.setIsCategoryCreated());
+      setTimeout(
+        () => dispatch(categoryActions.clearIsCategoryCreated()),
+        2000
+      ); // 2s
+    } catch (error) {
+      toast.error(error.response.data.message);
+      dispatch(categoryActions.clearLoading());
+    }
   };
 }
 

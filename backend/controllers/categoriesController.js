@@ -12,6 +12,7 @@ const {
  * @access  private (only admin)
  ------------------------------------------------*/
 module.exports.createCategory = asyncHandler(async (req, res) => {
+  // console.log("req.file :", req.file);
   // 1. Validation for image
   if (!req.file) {
     return res.status(400).json({ message: "no image provided" });
