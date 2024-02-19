@@ -12,7 +12,7 @@ LapTech is an e-commerce platform dedicated to the Algerian market, specializing
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Project Structure](#project-structure)
-    
+
 ## Features
 
 - **E-commerce Platform:** LapTech facilitates the buying and selling of laptops within the Algerian market.
@@ -86,3 +86,15 @@ Visit `http://localhost:5172` to access the LapTech application.
 - **`frontend/`**: Contains the React and Vite frontend application.
 - **`backend/`**: Includes the Node.js and Express backend for user authentication and CRUD operations.
 - **`prediction_model/`**: Django backend for the AI model to estimate laptop prices.
+
+## Screenshots
+
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-2024-02-20-00_14_21.png)
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-products-2024-02-20-00_14_38.png)
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-products-2024-02-20-00_14_53.png)
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-products-cart-2024-02-20-00_17_21.png)
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-products-details-65c20b7fe232ee468183e7d3-2024-02-20-00_15_06.png)
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-products-favorite-products-2024-02-20-00_17_00.png)
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-products-predict-product-price-2024-02-20-00_14_28.png)
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-products-sell-2024-02-20-00_16_46.png)
+![alt text](https://github.com/KamelTouati/Laptech-Final-Version/blob/main/screenshots/screencapture-localhost-5173-profile-65c165e6cf5b46bc98ff9c89-2024-02-20-00_17_34.png)
