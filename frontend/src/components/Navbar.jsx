@@ -8,7 +8,6 @@ import logo from "/public/assets/logo.svg";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   // Logout Handler
   const logoutHandler = () => {
     dispatch(logoutUser());

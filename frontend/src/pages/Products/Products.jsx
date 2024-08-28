@@ -1,4 +1,5 @@
-import { Card, Sidebar } from "../../components";
+import { Card } from "../../components";
+import Sidebar from "../../components/sidebar/Sidebar";
 import { Link } from "react-router-dom";
 import "./Products.css";
 import Pagination from "../../components/pagination/Pagination";
@@ -11,6 +12,7 @@ import {
 import Group22 from "/public/assets/Group22.png";
 import Forward from "/public/assets/Forward.png";
 import Back from "/public/assets/Back.png";
+import { companies } from "./data";
 
 const PRODUCT_PER_PAGE = 3;
 
@@ -19,6 +21,7 @@ export default function Products() {
   const { productsCount, products } = useSelector((state) => state.product);
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [filters, setFilters] = useState({ selectedCompanies: [] }); // Initialize filters with selectedCompanies
   const pages = Math.ceil(productsCount / PRODUCT_PER_PAGE);
 
   useEffect(() => {
@@ -31,41 +34,115 @@ export default function Products() {
   }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = [
-    "./assets/dell.png",
-    "./assets/hp.png",
-    "./assets/lenovo.png",
-    "./assets/msi.png",
-    "./assets/apple.png",
-    "./assets/acer.png",
-    "./assets/asus.png",
-    "./assets/dell.png",
-  ];
 
   const prevSlide = () => {
-    const index = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    const index = currentIndex === 0 ? companies.length - 1 : currentIndex - 1;
     setCurrentIndex(index);
   };
 
   const nextSlide = () => {
-    const index = (currentIndex + 1) % images.length;
+    const index = (currentIndex + 1) % companies.length;
     setCurrentIndex(index);
   };
 
-  const getVisibleImages = () => {
-    const visibleImages = [];
+  const getVisibleCompanies = () => {
+    const visibleCompanies = [];
     for (
       let i = currentIndex;
-      visibleImages.length < 8;
-      i = (i + 1) % images.length
+      visibleCompanies.length < 8;
+      i = (i + 1) % companies.length
     ) {
-      visibleImages.push(images[i]);
+      visibleCompanies.push(companies[i]);
     }
-    return visibleImages;
+    return visibleCompanies;
   };
 
-  const visibleImages = getVisibleImages();
+  const visibleCompanies = getVisibleCompanies();
 
+  const handleFilterChange = (filters) => {
+    setFilters(filters);
+  };
+
+  const handleCompanyFilter = (company) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      selectedCompanies: [{ value: company.name }],
+    }));
+  };
+
+  const applyFilters = (product) => {
+    if (
+      filters.selectedCompanies.length &&
+      !filters.selectedCompanies.some(
+        (company) => company.value === product.company
+      )
+    ) {
+      return false;
+    }
+    if (
+      filters.selectedModels.length &&
+      !filters.selectedModels.some((model) => model.value === product.model)
+    ) {
+      return false;
+    }
+    if (
+      filters.selectedOperatingSystems.length &&
+      !filters.selectedOperatingSystems.some(
+        (os) => os.value === product.operatingSystem
+      )
+    ) {
+      return false;
+    }
+    if (
+      filters.selectedProcessorCompanies.length &&
+      !filters.selectedProcessorCompanies.some(
+        (procCompany) => procCompany.value === product.processorCompany
+      )
+    ) {
+      return false;
+    }
+    if (
+      filters.selectedProcessorModels.length &&
+      !filters.selectedProcessorModels.some(
+        (procModel) => procModel.value === product.processorModel
+      )
+    ) {
+      return false;
+    }
+    if (
+      filters.selectedGraphicsCards.length &&
+      !filters.selectedGraphicsCards.some(
+        (gpu) => gpu.value === product.graphicsCard
+      )
+    ) {
+      return false;
+    }
+    if (
+      filters.selectedRamModels.length &&
+      !filters.selectedRamModels.some((ram) => ram.value === product.ram)
+    ) {
+      return false;
+    }
+    if (
+      filters.selectedDisplayOptions.length &&
+      !filters.selectedDisplayOptions.some(
+        (display) => display.value === product.display
+      )
+    ) {
+      return false;
+    }
+    if (
+      filters.selectedStorageOptions.length &&
+      !filters.selectedStorageOptions.some(
+        (storage) => storage.value === product.storage
+      )
+    ) {
+      return false;
+    }
+    return true;
+  };
+
+  const filteredProducts = products.filter(applyFilters);
   return (
     <div className="flex flex-col lg:px-20">
       <div className="my-10 lg:mx-20">
@@ -103,21 +180,34 @@ export default function Products() {
       </div>
       <div className="carousel-container relative overflow-visible">
         <div className="grid grid-cols-8 gap-10 my-20 ">
-          {visibleImages.map((image, index) => (
-            <div
-              key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-            >
-              <img src={image} alt={`Slide ${index}`} />
-            </div>
-          ))}
+          {visibleCompanies.map((company, index) => {
+            const isSelected = filters.selectedCompanies.some(
+              (selectedCompany) => selectedCompany.value === company.name
+            );
+
+            return (
+              <div
+                key={index}
+                className={`carousel-item active cursor-pointer p-2 rounded-lg transition duration-300 ${
+                  isSelected ? "bg-blue-200" : "hover:bg-gray-200"
+                }`}
+                onClick={() => handleCompanyFilter(company)}
+              >
+                <img
+                  src={company.image}
+                  alt={company.name}
+                  className="w-[80px]"
+                />
+              </div>
+            );
+          })}
           <button
             type="button"
             className="carousel-prev absolute -right-[50px]"
             onClick={prevSlide}
           >
             <span class="inline-flex items-center justify-center">
-              <img src={Forward} />
+              <img src={Forward} alt="Forward" />
               <span class="sr-only">Next</span>
             </span>
           </button>
@@ -127,16 +217,16 @@ export default function Products() {
             onClick={nextSlide}
           >
             <span className="inline-flex items-center justify-center">
-              <img src={Back} />
+              <img src={Back} alt="Back" />
               <span class="sr-only">Previous</span>
             </span>
           </button>
         </div>
       </div>
       <div className="flex justify-between gap-12 ">
-        <Sidebar />
+        <Sidebar onFilterChange={handleFilterChange} />
         <div class="p-4 grid grid-cols-1 gap-4">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <Card key={product.id} product={product} />
           ))}
         </div>

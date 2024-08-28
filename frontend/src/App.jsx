@@ -9,7 +9,6 @@ import {
   AdminDashboard,
   UsersTable,
   ProductsTable,
-  CategoriesTable,
   CommentsTable,
   ForgotPassword,
   Login,
@@ -17,7 +16,6 @@ import {
   Signup,
   Landing,
   Products,
-  Category,
   ProductPredict,
   Sell,
   ProductDetails,
@@ -82,7 +80,6 @@ export default function App() {
               element={user ? <Favorite /> : <Navigate to="/" />}
             />
             <Route path="details/:id" element={<ProductDetails />} />
-            <Route path="categories/:category" element={<Category />} />
           </Route>
           <Route path="admin-dashboard">
             <Route
@@ -96,12 +93,6 @@ export default function App() {
             <Route
               path="products-table"
               element={user?.isAdmin ? <ProductsTable /> : <Navigate to="/" />}
-            />
-            <Route
-              path="categories-table"
-              element={
-                user?.isAdmin ? <CategoriesTable /> : <Navigate to="/" />
-              }
             />
             <Route
               path="comments-table"

@@ -1,21 +1,17 @@
 import { Link } from "react-router-dom";
-import AddCategoryForm from "./AddCategoryForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchCategories } from "../../../redux/apiCalls/categoryApiCall";
 import { getUsersCount } from "../../../redux/apiCalls/profileApiCall";
 import { getProductsCount } from "../../../redux/apiCalls/productApiCall";
 import { fetchAllComments } from "../../../redux/apiCalls/commentApiCall";
 
 const AdminMain = () => {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.category);
   const { usersCount } = useSelector((state) => state.profile);
   const { productsCount } = useSelector((state) => state.product);
   const { comments } = useSelector((state) => state.comment);
 
   useEffect(() => {
-    dispatch(fetchCategories());
     dispatch(getUsersCount());
     dispatch(getProductsCount());
     dispatch(fetchAllComments());
@@ -49,21 +45,6 @@ const AdminMain = () => {
           </div>
         </div>
         <div className="admin-main-card">
-          <h5 className="admin-card-title">Categories</h5>
-          <div className="admin-card-count">{categories.length}</div>
-          <div className="admin-card-link-wrapper">
-            <Link
-              to="/admin-dashboard/categories-table"
-              className="admin-card-link"
-            >
-              See all categories
-            </Link>
-            <div className="admin-card-icon">
-              <i className="bi bi-tag-fill"></i>
-            </div>
-          </div>
-        </div>
-        <div className="admin-main-card">
           <h5 className="admin-card-title">Comments</h5>
           <div className="admin-card-count">{comments.length}</div>
           <div className="admin-card-link-wrapper">
@@ -79,7 +60,6 @@ const AdminMain = () => {
           </div>
         </div>
       </div>
-      <AddCategoryForm />
     </div>
   );
 };

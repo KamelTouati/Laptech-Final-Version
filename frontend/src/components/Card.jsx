@@ -11,8 +11,8 @@ export default function Card({ product }) {
   };
 
   return (
-    <div class="w-full rounded-[.5rem] borderStyle p-1">
-      <div class=" w-full rounded-[.5rem] bg-white flex md:flex-col items-center">
+    <div class="w-full h-fit rounded-[.5rem] borderStyle p-1">
+      <div class=" w-full h-fit rounded-[.5rem] bg-white flex md:flex-col items-center">
         <div class=" w-full rounded-[.5rem] flex justify-center items-center relative p-6">
           <div className="rounded-3xl ">
             <figure>

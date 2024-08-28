@@ -3,7 +3,6 @@ import "./UpdateProductModal.css";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../../../redux/apiCalls/productApiCall";
-import { fetchCategories } from "../../../redux/apiCalls/categoryApiCall";
 import { IoCloseCircleSharp } from "react-icons/io5";
 
 const UpdateProductModal = ({ setUpdateProduct, product }) => {
@@ -46,9 +45,6 @@ const UpdateProductModal = ({ setUpdateProduct, product }) => {
     setUpdateProduct(false);
   };
 
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, []);
 
   return (
     <div className="update-product">

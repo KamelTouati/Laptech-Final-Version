@@ -3,6 +3,15 @@ import { RotatingLines } from "react-loader-spinner";
 import { predictProductPrice } from "../../redux/apiCalls/predictionModelApiCall";
 import { useSelector, useDispatch } from "react-redux";
 import robot3 from "/public/assets/robot3.png";
+import {
+  companies,
+  cpuNames,
+  gpuNames,
+  memoryTypes,
+  operatingSystems,
+  screenResolutions,
+  typeNames,
+} from "../../utils/types";
 
 export default function ProductPredict() {
   const dispatch = useDispatch();
@@ -79,203 +88,291 @@ export default function ProductPredict() {
       >
         <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="company"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Company
           </label>
-          <input
-            type="text"
+          <select
             id="company"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            placeholder="Enter pc Company"
             required
-          />
+          >
+            <option value="" disabled>
+              Select a company
+            </option>
+            {companies.map((companyItem) => (
+              <option key={companyItem.name} value={companyItem.name}>
+                {companyItem.name}
+              </option>
+            ))}
+          </select>
         </div>
+
         <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="typeName"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Type Name
           </label>
-          <input
-            type="text"
+          <select
             id="typeName"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="typeName"
             value={typeName}
             onChange={(e) => setTypeName(e.target.value)}
-            placeholder="Enter pc type name"
             required
-          />
+          >
+            <option value="" disabled>
+              Select type name
+            </option>
+            {typeNames.map((name) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="mb-6">
+
+        {/* <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="inches"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Inches
           </label>
-          <input
-            type="text"
+          <select
             id="inches"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="inches"
             value={inches}
             onChange={(e) => setInches(e.target.value)}
-            placeholder="Enter pc inches"
             required
-          />
-        </div>
+          >
+            <option value="" disabled>
+              Select inches
+            </option>
+            {inchesOptions.map((inch) => (
+              <option key={inch} value={inch}>
+                {inch}
+              </option>
+            ))}
+          </select>
+        </div> */}
+
         <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="resolution"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Resolution
           </label>
-          <input
-            type="text"
+          <select
             id="resolution"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="resolution"
             value={resolution}
             onChange={(e) => setResolution(e.target.value)}
-            placeholder="Enter pc resolution"
             required
-          />
+          >
+            <option value="" disabled>
+              Select resolution
+            </option>
+            {screenResolutions.map((res) => (
+              <option key={res} value={res}>
+                {res}
+              </option>
+            ))}
+          </select>
         </div>
+
         <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="cpu"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             CPU
           </label>
-          <input
-            type="text"
+          <select
             id="cpu"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="cpu"
             value={cpu}
             onChange={(e) => setCPU(e.target.value)}
-            placeholder="Enter pc CPU"
             required
-          />
+          >
+            <option value="" disabled>
+              Select CPU
+            </option>
+            {cpuNames.map((cpuItem) => (
+              <option key={cpuItem} value={cpuItem}>
+                {cpuItem}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="mb-6">
+
+        {/* <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="ram"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             RAM
           </label>
-          <input
-            type="text"
+          <select
             id="ram"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="ram"
             value={ram}
             onChange={(e) => setRAM(e.target.value)}
-            placeholder="Enter pc RAM"
             required
-          />
-        </div>
+          >
+            <option value="" disabled>
+              Select RAM
+            </option>
+            {rams.map((ramItem) => (
+              <option key={ramItem} value={ramItem}>
+                {ramItem}
+              </option>
+            ))}
+          </select>
+        </div> */}
+
         <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="gpu"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             GPU
           </label>
-          <input
-            type="text"
+          <select
             id="gpu"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="gpu"
             value={gpu}
             onChange={(e) => setGPU(e.target.value)}
-            placeholder="Enter pc GPU"
             required
-          />
+          >
+            <option value="" disabled>
+              Select GPU
+            </option>
+            {gpuNames.map((gpuItem) => (
+              <option key={gpuItem} value={gpuItem}>
+                {gpuItem}
+              </option>
+            ))}
+          </select>
         </div>
+
         <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="opSystem"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Operating System
           </label>
-          <input
-            type="text"
+          <select
             id="opSystem"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="opSystem"
             value={opSystem}
             onChange={(e) => setOpSystem(e.target.value)}
-            placeholder="Enter pc Operating System"
             required
-          />
+          >
+            <option value="" disabled>
+              Select operating system
+            </option>
+            {operatingSystems.map((os) => (
+              <option key={os} value={os}>
+                {os}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="mb-6">
+
+        {/* <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="weight"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Weight
           </label>
-          <input
-            type="text"
+          <select
             id="weight"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="weight"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
-            placeholder="Enter pc weight"
             required
-          />
-        </div>
+          >
+            <option value="" disabled>
+              Select weight
+            </option>
+            {weights.map((weightItem) => (
+              <option key={weightItem} value={weightItem}>
+                {weightItem}
+              </option>
+            ))}
+          </select>
+        </div> */}
+
         <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="memoType"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Memory Type
           </label>
-          <input
-            type="text"
+          <select
             id="memoType"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="memoType"
             value={memoType}
             onChange={(e) => setMemoType(e.target.value)}
-            placeholder="Enter pc Memory Type"
             required
-          />
+          >
+            <option value="" disabled>
+              Select memory type
+            </option>
+            {memoryTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="mb-6">
+
+        {/* <div className="mb-6">
           <label
-            htmlFor="name"
+            htmlFor="memoSize"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Memory Size
           </label>
-          <input
-            type="text"
+          <select
             id="memoSize"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="memoSize"
             value={memoSize}
             onChange={(e) => setMemoSize(e.target.value)}
-            placeholder="Enter pc Memory Size"
             required
-          />
-        </div>
+          >
+            <option value="" disabled>
+              Select memory size
+            </option>
+            {memorySizes.map((size) => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+        </div> */}
       </form>
+
       <button
         type="submit"
         className="text-white bg-color3 hover:bg-color5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

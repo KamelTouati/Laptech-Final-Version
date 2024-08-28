@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { loginUser } from "../../redux/apiCalls/authApiCall";
+import { loginUser } from "../../../redux/apiCalls/authApiCall";
 import boy1 from "/public/assets/boy1.png";
 
 const Login = () => {
@@ -18,7 +18,6 @@ const Login = () => {
     e.preventDefault();
     if (email.trim() === "") return toast.error("Email is required");
     if (password.trim() === "") return toast.error("Password is required");
-
     dispatch(loginUser({ email, password }));
   };
 

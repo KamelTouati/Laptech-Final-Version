@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./slices/authSlice";
-import { categoryReducer } from "./slices/categorySlice";
 import { commentReducer } from "./slices/commentSlice";
 import { passwordReducer } from "./slices/passwordSlice";
 import { productReducer } from "./slices/productSlice";
@@ -12,7 +11,6 @@ const store = configureStore({
     auth: authReducer,
     profile: profileReducer,
     product: productReducer,
-    category: categoryReducer,
     comment: commentReducer,
     password: passwordReducer,
     predictionModel: predictionModelReducer,
