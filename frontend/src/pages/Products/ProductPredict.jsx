@@ -3,6 +3,11 @@ import { RotatingLines } from "react-loader-spinner";
 import { predictProductPrice } from "../../redux/apiCalls/predictionModelApiCall";
 import { useSelector, useDispatch } from "react-redux";
 import robot3 from "/public/assets/robot3.png";
+import robot4 from "/public/assets/robot4.png";
+import money from "/public/assets/money.png";
+import money_1 from "/public/assets/money_1.png";
+import { toast } from "react-toastify";
+
 import {
   companies,
   cpuNames,
@@ -10,7 +15,10 @@ import {
   memoryTypes,
   operatingSystems,
   screenResolutions,
+  inchesOptions,
   typeNames,
+  rams,
+  memorySizes,
 } from "../../utils/types";
 
 export default function ProductPredict() {
@@ -46,7 +54,7 @@ export default function ProductPredict() {
     if (gpu.trim() === "") return toast.error("Product GPU is required");
     if (opSystem.trim() === "")
       return toast.error("Product Operating System is required");
-    if (weight.trim() === "") return toast.error("Product Weight is required");
+    // if (weight.trim() === "") return toast.error("Product Weight is required");
     if (memoType.trim() === "")
       return toast.error("Product Memory Type is required");
     if (memoSize.trim() === "")
@@ -64,24 +72,31 @@ export default function ProductPredict() {
     formData.append("weight", weight);
     formData.append("memoType", memoType);
     formData.append("memoSize", memoSize);
-
+    console.log("formData", formData);
     dispatch(predictProductPrice(formData));
   };
   return (
     <div className="lg:px-20 my-10">
-      <div className="flex justify-around items-center">
-        <div className="flex flex-col">
-          <h1 className="text-3xl font-bold">
+      <div className="flex justify-around items-center bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-8 rounded-lg shadow-lg my-8">
+        <div className="flex flex-col items-center">
+          <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
             LapTech Guide: What's Your Ideal Laptop Price?
           </h1>
-          <h4>
-            Uncover Your Perfect Laptop Fit LapTech Guide is here to help.
+          <h4 className="text-lg text-gray-600 leading-relaxed text-center mb-6">
+            Uncover Your Perfect Laptop Fit! LapTech Guide is here to help.
             What's your preferred RAM, brand, and storage? Let us tailor a
             laptop price just for you. Curious?
           </h4>
         </div>
-        <img src={robot3} />
+        <img
+          src={robot3}
+          alt="Robot Guide"
+          className="w-64 h-64 object-cover rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+        />
       </div>
+      <h1 className="text-4xl font-extrabold text-[#655992] mb-4 text-center">
+        Let’s discover !
+      </h1>
       <form
         onSubmit={formSubmitHandler}
         className="grid grid-cols-1 lg:grid-cols-2 gap-4"
@@ -138,7 +153,7 @@ export default function ProductPredict() {
           </select>
         </div>
 
-        {/* <div className="mb-6">
+        <div className="mb-6">
           <label
             htmlFor="inches"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -162,7 +177,7 @@ export default function ProductPredict() {
               </option>
             ))}
           </select>
-        </div> */}
+        </div>
 
         <div className="mb-6">
           <label
@@ -216,7 +231,7 @@ export default function ProductPredict() {
           </select>
         </div>
 
-        {/* <div className="mb-6">
+        <div className="mb-6">
           <label
             htmlFor="ram"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -240,7 +255,7 @@ export default function ProductPredict() {
               </option>
             ))}
           </select>
-        </div> */}
+        </div>
 
         <div className="mb-6">
           <label
@@ -294,31 +309,25 @@ export default function ProductPredict() {
           </select>
         </div>
 
-        {/* <div className="mb-6">
+        <div className="mb-6">
           <label
             htmlFor="weight"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Weight
           </label>
-          <select
+          <input
             id="weight"
             className="inputStyle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="weight"
+            type="number"
             value={weight}
-            onChange={(e) => setWeight(e.target.value)}
+            onChange={(e) => setWeight(parseFloat(e.target.value))}
+            step="0.01"
+            placeholder="Enter weight"
             required
-          >
-            <option value="" disabled>
-              Select weight
-            </option>
-            {weights.map((weightItem) => (
-              <option key={weightItem} value={weightItem}>
-                {weightItem}
-              </option>
-            ))}
-          </select>
-        </div> */}
+          />
+        </div>
 
         <div className="mb-6">
           <label
@@ -346,7 +355,7 @@ export default function ProductPredict() {
           </select>
         </div>
 
-        {/* <div className="mb-6">
+        <div className="mb-6">
           <label
             htmlFor="memoSize"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -370,26 +379,67 @@ export default function ProductPredict() {
               </option>
             ))}
           </select>
-        </div> */}
+        </div>
+        <div></div>
+        <button
+          type="submit"
+          className="text-white bg-color3 hover:bg-color5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          {loading ? (
+            <RotatingLines
+              strokeColor="white"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="40"
+              visible={true}
+            />
+          ) : (
+            "Get estimate"
+          )}
+        </button>
       </form>
 
-      <button
-        type="submit"
-        className="text-white bg-color3 hover:bg-color5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        {loading ? (
-          <RotatingLines
-            strokeColor="white"
-            strokeWidth="5"
-            animationDuration="0.75"
-            width="40"
-            visible={true}
+      {/* {console.log("price", price)} */}
+      {price && (
+        <div className="relative flex flex-col p-8 bg-white">
+          {/* Background Images */}
+
+          <img
+            src={money}
+            alt="Money"
+            className="absolute left-0 top-1/2 w-40 h-40 opacity-50 transform -translate-y-1/2"
           />
-        ) : (
-          "Get estimate"
-        )}
-      </button>
-      {/* <h1>price : {price}</h1> */}
+          <img
+            src={money_1}
+            alt="Money"
+            className="absolute right-0 top-1/2 w-40 h-40 opacity-50 transform -translate-y-1/2"
+          />
+
+          {/* First Section */}
+          <div className="text-center mb-6">
+            <h1 className="text-4xl font-extrabold text-gray-800">
+              Here's your personalized estimate.
+            </h1>
+          </div>
+
+          {/* Second Section: Price and Robot */}
+          <div className="flex items-center justify-center space-x-6">
+            {/* Price Section */}
+            <div className="bg-green-100 text-green-700 font-bold text-3xl p-6 rounded-lg shadow-md">
+              {price ? `${parseFloat(price).toFixed(2)} DA` : "N/A"}
+            </div>
+
+            {/* Robot Image */}
+            <div>
+              <img
+                src={robot4}
+                alt="Robot"
+                className="w-32 h-32 object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

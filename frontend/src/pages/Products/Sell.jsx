@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { createProduct } from "../../redux/apiCalls/productApiCall";
 import { RotatingLines } from "react-loader-spinner";
 import girl1 from "/public/assets/girl1.png";
+import young_man from "/public/assets/young_man.png";
 import {
   companies,
   models,
@@ -85,14 +86,31 @@ const Sell = () => {
 
   return (
     <div className="lg:px-20">
+      <div className="flex justify-around items-center bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-8 rounded-lg shadow-lg my-8">
+        <div className="flex flex-col items-center">
+          <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
+            List Your Laptop for Sale
+          </h1>
+          <h4 className="text-lg text-gray-600 leading-relaxed text-center mb-6">
+            Provide details and photos to make your online posting.
+          </h4>
+        </div>
+        <img
+          src={young_man}
+          alt="Robot Guide"
+          className="w-64 h-64hover:scale-105 transition-transform duration-300"
+        />
+      </div>
       <div class="rounded-[2.5rem] borderStyle p-1 m-10">
         <div class="rounded-[2.5rem] bg-white">
           <div class="rounded-[2.5rem] bg-color1 flex justify-around items-center relative p-10">
             <div>
-              <h1 className="text-3xl font-black text-color3 py-2">
-                You want to sell your computer
+              <h1 className="text-3xl font-black text-color3 py-2 text-center">
+                Let's showcase your laptop for sale!
               </h1>
-              <h1 className="font-bold py-2">try to complete this Form</h1>
+              {/* <h1 className="font-bold py-2 text-center">
+                try to complete this Form
+              </h1> */}
               <form onSubmit={formSubmitHandler}>
                 <div className="mb-6">
                   <label

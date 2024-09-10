@@ -7,6 +7,7 @@ export function predictProductPrice(newProduct) {
   return async (dispatch, getState) => {
     try {
       dispatch(predictionModelActions.setLoading());
+      console.log("newProduct", newProduct);
       const { data } = await djangoRequest.post(
         "/api/laptops/predictPrice",
         newProduct,
@@ -18,6 +19,7 @@ export function predictProductPrice(newProduct) {
       );
       dispatch(predictionModelActions.predict(data));
       toast.success("Product Predicted successfully");
+      dispatch(predictionModelActions.clearLoading());
     } catch (error) {
       toast.error(error.response.data.message);
       dispatch(predictionModelActions.clearLoading());

@@ -26,6 +26,7 @@ const productDetails = () => {
 
   const [file, setFile] = useState(null);
   const [updateProduct, setUpdateProduct] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(product?.image.url);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -146,24 +147,73 @@ const productDetails = () => {
         </div>
         <div className="flex flex-col items-center">
           <img
-            src={file ? URL.createObjectURL(file) : product?.image.url}
+            src={file ? URL.createObjectURL(file) : selectedImage}
             alt=""
             className="w-[400px]"
           />
           <div className="flex gap-4 items-center h-[80px] my-8">
-            <div className="laptopContainer h-full flex justify-center itens-center">
-              <img src="/assets/laptop1.png" alt="" />
+            <div
+              className={`laptopContainer h-[100px] w-[100px] flex justify-center items-center cursor-pointer ${
+                selectedImage === product?.image.url ? "bg-blue-200" : ""
+              } hover:bg-gray-100`}
+              onClick={() => setSelectedImage(product?.image.url)}
+            >
+              <img
+                src={product?.image.url}
+                alt=""
+                className="h-full w-full object-cover rounded-[11px]"
+              />
             </div>
-            <div className="laptopContainer h-full flex justify-center itens-center">
-              <img src="/assets/laptop2.png" alt="" />
+            <div
+              className={`laptopContainer h-[100px] w-[100px] flex justify-center items-center cursor-pointer ${
+                selectedImage === "/assets/laptop1.png" ? "bg-blue-200" : ""
+              } hover:bg-gray-100`}
+              onClick={() => setSelectedImage("/assets/laptop1.png")}
+            >
+              <img
+                src="/assets/laptop1.png"
+                alt="laptop1"
+                className="h-full w-full object-cover rounded-[11px]"
+              />
             </div>
-            <div className="laptopContainer h-full flex justify-center itens-center">
-              <img src="/assets/laptop3.png" alt="" />
+            <div
+              className={`laptopContainer h-[100px] w-[100px] flex justify-center items-center cursor-pointer ${
+                selectedImage === "/assets/laptop2.png" ? "bg-blue-200" : ""
+              } hover:bg-gray-100`}
+              onClick={() => setSelectedImage("/assets/laptop2.png")}
+            >
+              <img
+                src="/assets/laptop2.png"
+                alt="laptop2"
+                className="h-full w-full object-cover rounded-[11px]"
+              />
             </div>
-            <div className="laptopContainer h-full flex justify-center itens-center">
-              <img src="/assets/laptop4.png" alt="" />
+            <div
+              className={`laptopContainer h-[100px] w-[100px] flex justify-center items-center cursor-pointer ${
+                selectedImage === "/assets/laptop3.png" ? "bg-blue-200" : ""
+              } hover:bg-gray-100`}
+              onClick={() => setSelectedImage("/assets/laptop3.png")}
+            >
+              <img
+                src="/assets/laptop3.png"
+                alt="laptop3"
+                className="h-full w-full object-cover rounded-[11px]"
+              />
+            </div>
+            <div
+              className={`laptopContainer h-[100px] w-[100px] flex justify-center items-center cursor-pointer ${
+                selectedImage === "/assets/laptop4.png" ? "bg-blue-200" : ""
+              } hover:bg-gray-100`}
+              onClick={() => setSelectedImage("/assets/laptop4.png")}
+            >
+              <img
+                src="/assets/laptop4.png"
+                alt="laptop4"
+                className="h-full w-full object-cover rounded-[11px]"
+              />
             </div>
           </div>
+
           {user?._id === product?.user?._id && (
             <form onSubmit={updateImageSubmitHandler}>
               <div className="flex items-center gap-4 my-4">
